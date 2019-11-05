@@ -1,12 +1,13 @@
 module SinCreator exposing (..)
 {-
-User:  Who is your imagined user
-Activity:  What activity is your user engaged in
-Emotion:  How does your user feel about this activity
-Tasks:  What tasks are part of this activity
-Typical Interaction:  Describe a typical interaction of your user (the TAs will test this out, so include sufficient detail)
-Principle 1:  First of Norman's principles and how it guided your design
-Principle 2:  Second of Norman's principles and how it guided your design.
+User:  Who is your imagined user: #12 year-old who don't know cos/sin function
+Activity:  What activity is your user engaged in: #They are creating some shapes for their elm project and they want to use this wave creator to animate their squares
+Emotion:  How does your user feel about this activity: #They are excited to do animation with elm but get confused of the sin/cos functions
+Tasks:  What tasks are part of this activity: #Rotate the square and make it transparent
+Typical Interaction:  Describe a typical interaction of your user (the TAs will test this out, so include sufficient detail): 
+#The user opens the shape creator website and picks the wave creator section. By shifting the left/right arrow, they are able to find ‘rotate’. They can easily copy and use the code on the top right. Then can adjust the magnitude of rotating speed, level and time delay by clicking the up/down arrow of ‘speed’, ‘level’, ‘time delay’. Similarly, they could switch to ‘makeTransparent’ with the left/right arrow.
+Principle 1:  First of Norman's principles and how it guided your design: We found that the given conceptual model was confusing for our target user. The user's goal is to create animated squares for their Elm program, so we tried to improve the conceptual model of the program. The original program showed the circle and its relation to sinusoid functions, and showed how changing things like the amplitude coefficient within the function affect the wave output. This model is unnecessary and distracts from what the values do to the properties of the animated square. We decided to remove the unnecessary information, and add labels which better describe their effect on the square. 
+Principle 2:  Second of Norman's principles and how it guided your design: constraints
 -}
 
 {-
