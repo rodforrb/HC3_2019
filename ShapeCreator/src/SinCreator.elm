@@ -1,4 +1,13 @@
 module SinCreator exposing (..)
+{-
+User:  Who is your imagined user
+Activity:  What activity is your user engaged in
+Emotion:  How does your user feel about this activity
+Tasks:  What tasks are part of this activity
+Typical Interaction:  Describe a typical interaction of your user (the TAs will test this out, so include sufficient detail)
+Principle 1:  First of Norman's principles and how it guided your design
+Principle 2:  Second of Norman's principles and how it guided your design.
+-}
 
 {-
 Copyright 2017-2019 Christopher Kumar Anand,  Adele Olejarz, Chinmay Sheth, Yaminah Qureshi, Graeme Crawley and students of McMaster University.  Based on the Shape Creator by Levin Noronha.
