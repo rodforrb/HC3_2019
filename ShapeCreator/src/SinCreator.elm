@@ -104,7 +104,7 @@ init =
     , vTextTransp = 0.5
     , maxAmplitude = 40
     , maxFrequency = 10
-    , maxShift = 2 * Basics.pi
+    , maxShift = 7
     , cosWaveLength = 200
     , sinWaveLength = 100
     }
@@ -372,10 +372,24 @@ update msg model =
                 , uShift =
                     case model.currentButton of
                         ShiftUp ->
-                            model.uShift + curveX model.buttonDownTime
+                            if model.uShift < model.maxShift then
+                                model.uShift + curveX model.buttonDownTime
+                            
+                            else if model.uShift > model.maxShift then
+                                model.maxShift
+
+                            else
+                                model.uShift
 
                         ShiftDown ->
-                            model.uShift - curveX model.buttonDownTime
+                            if model.uShift > -model.maxShift then
+                                model.uShift - curveX model.buttonDownTime
+                            
+                            else if model.uShift < -model.maxShift then
+                                -model.maxShift
+
+                            else
+                                model.uShift
 
                         _ ->
                             model.uShift
@@ -620,7 +634,7 @@ update msg model =
         UDilationMinus ->
             { model
                 | uDilation =
-                    if model.uDilation > 0 then
+                    if model.uDilation > -model.maxFrequency then
                         model.uDilation - 1
 
                     else
@@ -629,16 +643,20 @@ update msg model =
 
         UShiftPlus ->
             { model
-                | uArg =
-                    model.uArg + model.uShiftScale * Basics.pi / 4
-                , uShift = model.uShift + model.uShiftScale
+                | uShift =
+                    if model.uShift < model.maxShift then
+                        model.uShift + 1
+                    else
+                        model.maxShift
             }
 
         UShiftMinus ->
             { model
-                | uArg =
-                    model.uArg - model.uShiftScale * Basics.pi / 4
-                , uShift = model.uShift - model.uShiftScale
+                | uShift =
+                    if model.uShift > -model.maxShift then
+                        model.uShift - 1
+                    else
+                        -model.maxShift
             }
 
         EditableScalePlus ->
@@ -1180,9 +1198,9 @@ view model =
 
         triangleLabels = 
             group
-                [ text ("Speed: " ++ String.fromFloat model.uDilation) |> fixedwidth |> size 10 |> filled black |> move (-200, -10)
-                , text ("Level: " ++ String.fromFloat model.uScale) |> fixedwidth |> size 10 |> filled black |> move (-200, -50)
-                , text ("Delay: " ++ String.fromFloat model.uShift) |> fixedwidth |> size 10 |> filled black |> move (-200, -90)
+                [ text ("Speed: " ++ String.fromFloat model.uDilation) |> fixedwidth |> size 10 |> filled black |> move (-180, -10)
+                , text ("Level: " ++ String.fromFloat model.uScale) |> fixedwidth |> size 10 |> filled black |> move (-180, -50)
+                , text ("Time delay: " ++ String.fromFloat model.uShift) |> fixedwidth |> size 10 |> filled black |> move (-210, -90)
                 ]
 
         rgbGraphics =
